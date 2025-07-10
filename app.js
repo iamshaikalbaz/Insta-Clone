@@ -6,20 +6,8 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const localStrategy = require('passport-local');
-const mongoose = require('mongoose');
 
 
-require('dotenv').config();
-
-const mongoUri = process.env.MONGO_URI;
-const port = process.env.PORT || 3000;
-
-mongoose.connect(mongoUri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('✅ Connected to MongoDB'))
-.catch((err) => console.error('❌ MongoDB connection error:', err));
 
 
 // ✅ Load User Model (the Mongoose schema with plugin)
@@ -63,6 +51,6 @@ const indexRouter = require('./routes/index');
 app.use('/', indexRouter);
 
 // ✅ Start Server
-app.listen(port, () => {
-  console.log(`🚀 Server running on port ${port}`);
+app.listen(3000, () => {
+  console.log("its Running");
 });
