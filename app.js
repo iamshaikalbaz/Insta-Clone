@@ -7,6 +7,16 @@ const session = require('express-session');
 const passport = require('passport');
 const localStrategy = require('passport-local');
 
+require('dotenv').config();
+
+mongoose.connect(mongoUri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('✅ Connected to MongoDB'))
+.catch((err) => console.error('❌ MongoDB connection error:', err));
+
+
 // ✅ Load User Model (the Mongoose schema with plugin)
 const userModel = require('./routes/users');
 
@@ -48,6 +58,6 @@ const indexRouter = require('./routes/index');
 app.use('/', indexRouter);
 
 // ✅ Start Server
-app.listen(3000, () => {
-    console.log("Its Runing");
+app.listen(port, () => {
+  console.log(`🚀 Server running on port ${port}`);
 });
