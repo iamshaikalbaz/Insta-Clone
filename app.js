@@ -6,8 +6,13 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const localStrategy = require('passport-local');
+const mongoose = require('mongoose');
+
 
 require('dotenv').config();
+
+const mongoUri = process.env.MONGO_URI;
+const port = process.env.PORT || 3000;
 
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
