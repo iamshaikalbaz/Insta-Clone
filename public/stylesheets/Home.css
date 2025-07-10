@@ -1,0 +1,56 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.header {
+    width: 100%;
+    height: 50px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+
+}
+
+.header h1 {
+    color: white;
+    font-size: 30px;
+    font-family: instagram Sans;
+}
+
+.body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding-bottom: 60px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.body .status {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}

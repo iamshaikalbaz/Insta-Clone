@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./Partials/Head'); %>
+</head>
+
+<body class="bg-black h-[700px]">
+
+    <div class="text-white text-2xl p-3 flex gap-7">
+        <a href="/Profile"><i class="ri-arrow-left-line"></i></a>
+        <h1>Edit Profile</h1>
+    </div>
+
+    <div class="profile text-white flex justify-center mt-2 gap-4">
+        <img src="/images/uploads/<%= user.profileImage %>" class="w-20 h-20  rounded-full" alt="">
+        <span
+            class="text-white text-5xl bg-zinc-800 flex justify-center items-center p-10 w-20 h-20 rounded-full border-2 border-gray-500"><i
+                class='bx  bx-face'></i> </span>
+    </div>
+    <button id="editbtn" class="text-blue-500 ml-20 p-4">
+        Change profile picture
+    </button>
+
+
+    <form action="/update" method="post" enctype="multipart/form-data" class="form p-5 flex flex-col gap-6">
+
+        <input id="imageinput" hidden type="file" name="image">
+
+        <!-- Name -->
+        <div class="relative w-full">
+            <input type="text" name="name" id="name" value="<%= user.name %>" placeholder="Name"
+                class="peer h-12 w-full border-b border-gray-400 bg-transparent text-white placeholder-transparent focus:outline-none focus:border-blue-500" />
+            <label for="name"
+                class="absolute left-0 -top-3.5 text-sm text-gray-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-400">
+                Name
+            </label>
+        </div>
+
+        <!-- Username -->
+        <div class="relative w-full">
+            <input type="text" name="username" id="username" value="<%= user.username %>" placeholder="Username"
+                class="peer h-12 w-full border-b border-gray-400 bg-transparent text-white placeholder-transparent focus:outline-none focus:border-blue-500" />
+            <label for="username"
+                class="absolute left-0 -top-3.5 text-sm text-gray-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-400">
+                Username
+            </label>
+        </div>
+
+        <!-- Pronouns -->
+        <div class="relative w-full">
+            <input type="text" name="pronouns" id="pronouns" value="<%= user.pronouns %>" placeholder="Pronouns"
+                class="peer h-12 w-full border-b border-gray-400 bg-transparent text-white placeholder-transparent focus:outline-none focus:border-blue-500" />
+            <label for="pronouns"
+                class="absolute left-0 -top-3.5 text-sm text-gray-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-400">
+                Pronouns
+            </label>
+        </div>
+
+        <!-- Bio -->
+        <div class="relative w-full">
+            <input type="text" name="bio" id="bio" value="<%= user.bio %>" placeholder="Bio"
+                class="peer h-12 w-full border-b border-gray-400 bg-transparent text-white placeholder-transparent focus:outline-none focus:border-blue-500" />
+            <label for="bio"
+                class="absolute left-0 -top-3.5 text-sm text-gray-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-400">
+                Bio
+            </label>
+        </div>
+
+        <!-- Gender -->
+        <div class="relative w-full">
+            <input type="text" name="gender" id="gender" value="<%= user.gender %>" placeholder="Gender"
+                class="peer h-12 w-full border-b border-gray-400 bg-transparent text-white placeholder-transparent focus:outline-none focus:border-blue-500" />
+            <label for="gender"
+                class="absolute left-0 -top-3.5 text-sm text-gray-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-400">
+                Gender
+            </label>
+        </div>
+
+        <input type="submit" class="w-full h-10 text-black rounded-lg text-xl bg-blue-500 px-4 py-2" value="Update Profile" />
+    </form>
+
+
+    <script>
+        document.querySelector('#editbtn')
+            .addEventListener("click", function () {
+                document.querySelector('#imageinput').click();
+            })
+    </script>
+
+    <%- include('./Partials/Footer'); %>
+
+
+</body>
+
+</html>

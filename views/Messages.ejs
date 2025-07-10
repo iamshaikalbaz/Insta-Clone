@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./Partials/Head'); %>
+</head>
+
+<body class="bg-black text-white">
+
+    <div class="text-white text-2xl flex justify-between items-center px-4 py-3">
+        <a href="/Home"><i class="ri-arrow-left-line"></i></a>
+        <h1>
+            <%= user.username %>
+        </h1>
+        <div class="flex items-center gap-4">
+            <i class="ri-apps-line text-2xl text-white"></i> <!-- Heart icon -->
+            <a href="/Messages"><i class="ri-file-edit-line text-2xl text-white"></i></a> <!-- Chat icon -->
+        </div>
+    </div>
+
+    <div class="fixed top-13 left-0 right-0 z-50 bg-black px-4 py-3">
+        <div class="relative w-full">
+            <img src="/images/meta ai.gif" alt="Meta AI"
+                class="absolute left-3 mt-8 transform -translate-y-1/2 w-6 h-6 rounded-full" />
+            <input type="search" id="inputusername"
+                class="block w-full p-2 pl-10 text-lg bg-zinc-800 text-white placeholder-gray-400 rounded-full"
+                placeholder="Ask Meta AI or Search" autocomplete="off" required />
+        </div>
+    </div>
+
+    <div class="status flex gap-3.5 overflow-x-auto whitespace-nowrap mt-16 px-4 py-2 no-scrollbar">
+            <!-- My Status -->
+            <div class="inline-block">
+                <div class="w-16 h-16 rounded-full border-2 border-green-300 overflow-hidden">
+                    <img src="/images/uploads/<%= user.profileImage %>" class="w-full h-full object-cover"
+                        alt="Your note">
+                </div>
+                <p class="text-center text-sm mt-1 text-gray-500">Your note</p>
+            </div>
+
+            <!-- Other Statuses -->
+            <% for(let i=0; i < 10; i++) { %>
+                <div class="inline-block">
+                    <div class="w-16 h-16 bg-zinc-600 rounded-full border-2 border-yellow-300"></div>
+                </div>
+                <% } %>
+        </div>
+
+
+
+    <%- include('./Partials/Footer'); %>
+</body>
+
+</html>

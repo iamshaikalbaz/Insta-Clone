@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./Partials/Head'); %>
+</head>
+
+<body class="bg-black flex flex-col overflow-y-auto min-h-screen">
+    <!-- Header -->
+    <div class="header flex justify-between items-center px-4 py-3">
+        <h1 class="text-white text-3xl" style="font-family: 'Lobster', cursive;">Instagram</h1>
+
+        <div class="flex items-center gap-4">
+            <i class="ri-heart-line text-2xl text-white"></i> <!-- Heart icon -->
+            <a href="/Messages"><i class="ri-chat-3-line text-2xl text-white"></i></a> <!-- Chat icon -->
+        </div>
+    </div>
+
+
+    <!-- Scrollable Main Content -->
+    <div class="main-content">
+        <div class="status flex gap-3.5 overflow-x-auto whitespace-nowrap px-4 py-2 no-scrollbar">
+            <!-- My Status -->
+            <div class="inline-block relative">
+                <div class="w-18 h-18 rounded-full border-2 border-green-300 overflow-hidden">
+                    <% if (myStory) { %>
+                        <a href="/Mystory">
+                            <img src="/images/uploads/<%= user.profileImage %>" class="w-full h-full object-cover"
+                                alt="Your Story">
+                        </a>
+                        <% } else { %>
+                            <img src="/images/uploads/<%= user.profileImage %>" class="w-full h-full object-cover"
+                                alt="Your Story">
+                            <% } %>
+                </div>
+
+                <!-- + Icon -->
+                <button onclick="document.getElementById('storyInput').click()"
+                    class="absolute bottom-5 right-2 bg-blue-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs border-2 border-white shadow">
+                    +
+                </button>
+
+                <p class="text-center text-sm mt-1 text-gray-500">
+                    <% if (myStory) { %> View Story <% } else { %> Your Story <% } %>
+                </p>
+            </div>
+
+            <!-- Other statuses -->
+            <% for(let i=0; i < 10; i++) { %>
+                <div class="inline-block">
+                    <div class="w-18 h-18 bg-zinc-600 rounded-full border-2 border-yellow-300"></div>
+                </div>
+                <% } %>
+        </div>
+
+        <form action="/add-story" method="POST" enctype="multipart/form-data" id="storyForm">
+    <input type="file" name="story" id="storyInput" accept="image/*,video/*" class="hidden" onchange="uploadStory()">
+</form>
+
+
+
+
+        <!-- Posts Feed -->
+        <div class="post">
+            <% posts.forEach(function(elem) { %>
+                <!-- User Info -->
+                <div class="friend-1 flex items-center gap-3 ml-4 mt-4">
+                    <img src="/images/uploads/<%= elem.user.profileImage %>" alt="Profile"
+                        class="w-10 h-10 rounded-full" />
+                    <div class="flex flex-col">
+                        <h5 class="text-white font-medium">
+                            <%= elem.user.username %>
+                        </h5>
+                        <h5 class="text-gray-500 text-sm">1d</h5>
+                    </div>
+                </div>
+
+                <!-- Post -->
+                <div class="post mt-3 mb-5">
+                    <img class="w-full mb-2" src="/images/uploads/<%= elem.picture %>" alt="Post" />
+                    <div class="flex items-center justify-between px-4">
+                        <div class="flex gap-4 text-white text-2xl items-center">
+                            <button class="like-btn flex items-center" data-id="<%= elem._id %>">
+                                <% if (elem.likes.indexOf(user._id) !==-1) { %>
+                                    <i class="ri-heart-fill text-red-600 text-2xl leading-none align-middle"></i>
+                                    <% } else { %>
+                                        <i class="ri-heart-line text-2xl leading-none align-middle"></i>
+                                        <% } %>
+                            </button>
+                            <i class="ri-chat-1-line text-2xl leading-none align-middle"></i>
+                            <i class="ri-send-plane-line text-2xl leading-none align-middle"></i>
+                        </div>
+
+
+                        <button class="save-btn flex items-center" data-id="<%= elem._id %>">
+                            <% if (user.savedPosts.includes(String(elem._id))) { %>
+                                <i class="ri-bookmark-fill text-white text-2xl leading-none align-middle"></i>
+                                <% } else { %>
+                                    <i class="ri-bookmark-line text-white text-2xl leading-none align-middle"></i>
+                                    <% } %>
+                        </button>
+
+
+
+
+
+                    </div>
+
+                    <h3 class="text-white text-sm ml-4 mt-1 like-count">
+                        <%= elem.likes.length || 0 %> Likes
+                    </h3>
+                    <p class="text-white text-sm ml-4 pb-2"><strong>
+                            <%= elem.user.username %>
+                        </strong>
+                        <%= elem.caption %>
+                    </p>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.like-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const postId = btn.dataset.id;
+
+                try {
+                    const res = await fetch(`/like/post/${postId}`, {
+                        method: 'POST'
+                    });
+
+                    if (res.ok) {
+                        const data = await res.json();
+
+                        // Toggle icon
+                        const icon = btn.querySelector('i');
+                        const likeCount = btn.closest('.post').querySelector('.like-count');
+
+                        if (data.liked) {
+                            icon.classList.remove('ri-heart-line');
+                            icon.classList.add('ri-heart-fill', 'text-red-600');
+                        } else {
+                            icon.classList.remove('ri-heart-fill', 'text-red-600');
+                            icon.classList.add('ri-heart-line');
+                        }
+
+                        // Update like count
+                        likeCount.textContent = `${data.likes} Likes`;
+                    }
+                } catch (err) {
+                    console.error('Error toggling like:', err);
+                }
+            });
+        });
+
+        document.querySelectorAll('.save-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const postId = btn.dataset.id;
+
+                try {
+                    const res = await fetch(`/save/post/${postId}`, { method: 'POST' });
+                    if (res.ok) {
+                        const data = await res.json();
+                        const icon = btn.querySelector('i');
+
+                        if (data.saved) {
+                            icon.classList.remove('ri-bookmark-line');
+                            icon.classList.add('ri-bookmark-fill');
+                        } else {
+                            icon.classList.remove('ri-bookmark-fill');
+                            icon.classList.add('ri-bookmark-line');
+                        }
+                    }
+                } catch (err) {
+                    console.error('Error saving post:', err);
+                }
+            });
+        });
+
+      function uploadStory() {
+  document.getElementById('storyForm').submit();
+}
+
+
+
+    </script>
+
+
+    <!-- Footer -->
+    <%- include('./Partials/Footer'); %>
+</body>
+
+</html>

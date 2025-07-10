@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./Partials/Head'); %>
+</head>
+
+<body class="bg-black text-white">
+    <div class="text-white text-2xl p-3 flex gap-7">
+        <a href="/Profile"><i class="ri-arrow-left-line"></i></a>
+        <h1>Setting and Activity</h1>
+    </div>
+
+    <div class="search relative text-white px-4">
+        <i class='bx bx-search absolute left-8 mt-2 text-2xl text-gray-500'></i>
+        <input type="text"
+            class="w-full pl-10 pr-4 py-2 bg-zinc-900 rounded-full border-2 border-gray-700 outline-none bg-transparent text-white"
+            placeholder="Search">
+    </div>
+
+    <div class="your-account flex justify-between px-4 p-4 text-zinc-500">
+        <h2>Your account</h2>
+        <span class="flex gap-1 text-white text-lg"><i class="ri-infinity-line text-2xl"></i>
+            <h1>Meta</h1>
+        </span>
+    </div>
+    <hr class="border-2 border-zinc-800">
+
+    <div class="uses text-white">
+        <h2 class="text-zinc-500 px-4 py-3 tracking-wide">How you use Instagram</h2>
+
+        <div class="icons flex flex-col gap-1 px-2 text-lg">
+            <a href="/Saved">
+                <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <i class="ri-bookmark-line text-xl"></i>
+                    <span>Saved</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+            </a>
+
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <i class="ri-archive-line text-xl"></i>
+                    <span>Archive</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <i class="ri-timeline-view text-xl"></i>
+                    <span>Your Activity</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <i class="ri-notification-3-line text-xl"></i>
+                    <span>Notifications</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <i class="ri-time-line text-xl"></i>
+                    <span>Time Management</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+        </div>
+    </div>
+    <hr class="border-2 border-zinc-800 mt-2">
+
+    <div class="content text-white">
+        <h2 class="text-zinc-500 px-4 py-3 tracking-wide">Who can see your content</h2>
+
+        <div class="icons flex flex-col gap-1 px-2 text-lg">
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <i class="ri-chat-3-line"></i> 
+                    <span>Account Privacy</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <i class="ri-at-line"></i>
+                    <span>Close Friends</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <i class="ri-message-3-line"></i>
+                    <span>Crossposting</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <i class="ri-share-forward-line"></i>
+                    <span>Blocked</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                  <i class="ri-lock-line"></i> 
+                    <span>Hide story and Live</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+        </div>
+    </div>
+
+    <hr class="border-2 border-zinc-800 mt-2">
+    
+
+    <div class="interact text-white">
+        <h2 class="text-zinc-500 px-4 py-3 tracking-wide">How others can interact with you</h2>
+
+        <div class="icons flex flex-col gap-1 px-2 text-lg">
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <i class="ri-chat-3-line"></i> 
+                    <span>Messages and story replies</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <i class="ri-at-line"></i>
+                    <span>Tags and mentions</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <i class="ri-message-3-line"></i>
+                    <span>Comments</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <i class="ri-share-forward-line"></i>
+                    <span>Sharing</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                  <i class="ri-lock-line"></i> 
+                    <span>Restricted</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <i class="ri-message-3-line"></i>
+                    <span>Limit interactions</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <i class="ri-share-forward-line"></i>
+                    <span>Hidden Words</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+
+            <div class="flex justify-between items-center hover:bg-zinc-800 p-2 rounded cursor-pointer">
+                <div class="flex items-center gap-4">
+                  <i class="ri-lock-line"></i> 
+                    <span>Follow and invite friends</span>
+                </div>
+                <i class="ri-arrow-right-s-line text-xl text-zinc-400"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <%- include('./Partials/Footer'); %>
+</body>
+
+</html>

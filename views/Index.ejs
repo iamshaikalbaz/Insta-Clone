@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <%- include('./Partials/Head'); %>
+     
+</head>
+<body class="bg-black">
+    <h1 style="font-family: 'Lobster', cursive;" class="text-5xl font-insta text-white flex justify-center mt-20">Instagram</h1>
+    
+     <form action="/register" method="post" class="form p-5 flex flex-col gap-5">
+         <input type="text" name="username" placeholder="Username"
+            class="placeholder-gray-500 text-white border-b border-gray-400 outline-none text-lg w-full h-10">
+        <input type="email" placeholder="Email" name="email"
+            class="placeholder-gray-500 text-white border-b border-gray-400 outline-none text-lg w-full h-10">
+        <input type="text" placeholder="Name" name="name"
+            class="placeholder-gray-500 text-white border-b border-gray-400 outline-none text-lg w-full h-10">
+        <input type="password" placeholder="Password" name="password"
+            class="placeholder-gray-500 text-white border-b border-gray-400 outline-none text-lg w-full h-10">
+        <input type="submit" class="w-full h-10 text-black rounded-lg text-xl bg-blue-500 px-4" value="Make New Account">
+        
+        <h1 class="text-gray-400 flex justify-center text-lg">Alredy have an account ?<a href="/Login" style="color: magenta;">Login</a></h1>
+     </form>
+    
+     <%- include('./Partials/Footer'); %>
+    
+</body>
+</html>

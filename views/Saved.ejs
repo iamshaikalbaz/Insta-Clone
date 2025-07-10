@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./Partials/Head') %>
+</head>
+
+<body class="bg-black text-white">
+    <!-- Header -->
+    <div class="text-white text-2xl p-3 flex gap-7">
+        <a href="/Menu-items"><i class="ri-arrow-left-line"></i></a>
+        <h1>Saved Posts</h1>
+    </div>
+
+    <!-- Tabs / Controls -->
+    <div class="posts text-3xl text-gray-300 flex justify-center gap-2">
+        <div class="flex gap-40">
+            <a href=""><i class='bx bx-border-all'></i></a>
+            <a href=""><i class='bx bx-play-circle'></i></a>
+        </div>
+    </div>
+
+    <hr class="border-1 border-zinc-800">
+
+   <!-- Saved Posts Grid -->
+<div class="saved-posts grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-1 p-4">
+    <% if (savedPosts.length > 0) { %>
+        <% savedPosts.forEach(post => { %>
+            <div class="post relative w-full aspect-square">
+                <img src="/images/uploads/<%= post.picture %>" alt=""
+                     class="w-full h-full object-cover rounded shadow-md hover:scale-105 transition-transform duration-300" />
+            </div>
+        <% }) %>
+    <% } else { %>
+        <p class="text-center mt-4 text-gray-400 col-span-full">No saved posts yet.</p>
+    <% } %>
+</div>
+
+
+    <%- include('./Partials/Footer'); %>
+</body>
+
+</html>

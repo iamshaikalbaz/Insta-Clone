@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./Partials/Head'); %>
+</head>
+
+<body class="bg-black">
+    <div class="flex gap-20 p-2 text-gray-300 text-lg">
+        <h1>Profile</h1>
+        <h1>Upload Post</h1>
+        <h1><a href="/Home">Home</a></h1>
+    </div>
+
+    <div class="select-img flex justify-center items-center flex-col text-gray-300 gap-3 p-3">
+
+        <span
+            class="text-white text-5xl mt-12  flex justify-center items-center p-13 w-20 h-20 rounded-full border-2 border-gray-500"><i
+                class='bx  bx-image'></i> </span>
+        <button id="selectpic" class="text-blue-500">Select Picture</button>
+        <form class="w-full" id="uploadform" action="/upload" method="post" enctype="multipart/form-data">
+            <input hidden type="file" name="image">
+            <textarea name="caption" class="w-full h-20 p-2 mt-8 outline-none border-2 border-gray-500"
+                placeholder="Write a Caption" id=""></textarea>
+            <input type="submit" class="w-full h-10 text-black rounded-lg text-xl bg-blue-500 px-4 py-2" value="Post">
+        </form>
+
+    </div>
+
+    <script>
+        document.querySelector('#selectpic')
+            .addEventListener("click", function () {
+                document.querySelector('#uploadform input').click();
+            })
+    </script>
+
+    <%- include('./Partials/Footer'); %>
+
+</body>
+
+</html>

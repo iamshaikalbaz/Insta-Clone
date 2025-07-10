@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <%- include('./Partials/Head'); %>
+</head>
+
+<body class="bg-black">
+     <div class="head flex justify-between items-center text-gray-300 text-xl px-3 mt-3">
+          <h1>
+               <%= user.username %>
+          </h1>
+          <div class="flex gap-4 text-2xl">
+               <a href=""><i class='bx bx-plus-circle'></i></a>
+               <a href="/Menu-items"><i class='bx bx-menu'></i></a>
+          </div>
+     </div>
+
+     <div class="profile flex justify-between items-center text-gray-300 px-3 mt-3">
+          <img src="/images/uploads/<%= user.profileImage %>" class="w-20 h-20 mt-2 rounded-full" alt="">
+          <div class="flex gap-5">
+               <h1>15 <br> Posts</h1>
+               <h1>339 <br> Followers</h1>
+               <h1>45 <br> Following</h1>
+          </div>
+     </div>
+     <div class="text-gray-300 text-sm p-3">
+          <h1 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+               <%= user.bio %>
+          </h1>
+          <h1 class="mt-3 text-lg">@ <%= user.username %>
+          </h1>
+     </div>
+
+     <div class="text-gray-300 flex justify-center mt-2 gap-2">
+          <button class="text-lg bg-zinc-800 px-6 py-2 rounded hover:bg-zinc-700"><a href="/Edit">Edit
+                    Profile</a></button>
+          <button class="text-lg bg-zinc-800 px-6 py-2 rounded hover:bg-zinc-700">Share Profile</button>
+          <button class="text-2xl bg-zinc-800 px-3 py-2 rounded hover:bg-zinc-700 flex items-center gap-2">
+               <i class='bx bx-user-plus'></i>
+          </button>
+     </div>
+
+     <div class="posts text-3xl text-gray-300 flex justify-center mt-5 gap-2">
+          <div class="flex gap-20">
+               <a href=""><i class='bx  bx-border-all'></i> </a>
+               <a href=""><i class='bx  bx-play-circle'></i> </a>
+               <a href=""><i class='bx  bx-user-circle'></i> </a>
+          </div>
+     </div>
+
+     <div class="grid grid-cols-3 gap-2 mt-4 px-2">
+          <% posts.forEach(function(post) { %>
+               <div class="aspect-square bg-zinc-800 flex justify-center items-center overflow-hidden">
+                    <img src="/images/uploads/<%= post.picture %>" alt="Post" class="w-full h-full object-cover" />
+               </div>
+          <% }) %>
+     </div>
+
+
+
+
+
+     <%- include('./Partials/Footer'); %>
+
+</body>
+
+</html>

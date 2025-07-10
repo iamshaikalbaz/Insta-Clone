@@ -1,0 +1,49 @@
+<div class="footer text-white text-2xl fixed bottom-0 left-0 w-full text-center">
+    <span><a href="/Home"><i class='bx bx-home-alt-2'></i></a></span>
+    <span><a href="/Search"><i class='bx bx-search'></i></a></span>
+    <span><a href="/Post"><i class='bx bx-plus-circle'></i></a></span>
+    <span>
+        <a href="/Profile">
+            <% if (user && user.profileImage) { %>
+                <img src="/images/uploads/<%= user.profileImage %>" class="footer-profile" alt="Profile">
+            <% } else { %>
+                <img src="/images/default-profile.png" class="footer-profile" alt="Profile">
+            <% } %>
+        </a>
+    </span>
+</div>
+
+
+<style>
+        .footer {
+                width: 100%;
+                height: 60px;
+                background-color: black;
+                border-top: 1px solid white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                justify-content: space-around;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+
+        }
+        .footer-profile {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+</style>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+                var scrollpos = localStorage.getItem('scrollpos');
+                if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function (e) {
+                localStorage.setItem('scrollpos', window.scrollY);
+        };
+</script>
