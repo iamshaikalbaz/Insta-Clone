@@ -54,8 +54,9 @@
         </div>
 
         <form action="/add-story" method="POST" enctype="multipart/form-data" id="storyForm">
-    <input type="file" name="story" id="storyInput" accept="image/*,video/*" class="hidden" onchange="uploadStory()">
-</form>
+            <input type="file" name="story" id="storyInput" accept="image/*,video/*" class="hidden"
+                onchange="uploadStory()">
+        </form>
 
 
 
@@ -177,9 +178,9 @@
             });
         });
 
-      function uploadStory() {
-  document.getElementById('storyForm').submit();
-}
+        function uploadStory() {
+            document.getElementById('storyForm').submit();
+        }
 
 
 

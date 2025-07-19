@@ -6,12 +6,16 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const localStrategy = require('passport-local');
-
+const methodOverride = require('method-override');
 
 
 
 // ✅ Load User Model (the Mongoose schema with plugin)
 const userModel = require('./routes/users');
+
+// const postRouter = require('./routes/postRoutes');
+// app.use('/', postRouter);
+
 
 // ✅ MIDDLEWARE (MUST be in this order)
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +23,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
+
+app.use(methodOverride('_method'));
 
 app.use(session({
     secret: 'hey hey hey',
@@ -54,3 +60,4 @@ app.use('/', indexRouter);
 app.listen(3000, () => {
   console.log("its Running");
 });
+

@@ -199,6 +199,7 @@ router.post("/add-story", upload.single("story"), (req, res) => {
 
 
 
+
 router.get('/profile/:username', async (req, res) => {
   try {
     const user = await userModel.findOne({ username: req.params.username }).populate('post');
